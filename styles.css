@@ -1,27 +1,52 @@
 .banner {
-    background: rgb(0,0,0);
-    color: white;
-    padding: 100;
+  background: blue;
+  color: white;
+  padding: 10px; /* Adjust padding for desired spacing */
+  display: flex; /* Enable flexbox for alignment */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Push items to the edges */
 }
 .column {
     float: left;
     width: 50%;
   }
   
-  /* Clear floats after the columns */
+ 
 .row:after {
     content: "";
     display: table;
     clear: both;
   }
-.header {
-    position: absolute;      /* Position icon in top-left corner */
-    top: 10px;               /* Distance from top */
-    left: 10px;              /* Distance from left */
-  }
-  
+  .header {
+    margin: 0; /* Reset margin */
+    position: relative; /* Use relative positioning */
+}
 .header img {
-    width: 30px;             /* Adjust the size of the icon */
-    height: 30px;            /* Keep the icon square */
-    cursor: pointer;         /* Change cursor to pointer on hover */
+    width: 30px;             
+    height: 30px;           
+    cursor: pointer;        
+
   }
+.ptype-logo {
+  text-decoration: none;
+  color: inherit;
+}
+.ptype-logo:hover {
+  text-decoration: none; 
+  color: inherit;        
+}
+.sub-banner
+{
+  margin: auto;
+  width: 30%;
+  padding: 10px;
+}
+.grid-container {
+  
+  display: inline-grid;
+  grid-template-columns: 200px 200px  200px;
+}
+* {
+  font-family: "courier";
+  background-color: gray;
+ }

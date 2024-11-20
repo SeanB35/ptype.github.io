@@ -1,0 +1,17 @@
+[
+    {"title": "Pride and Prejudice", "author": "Jane Austen"},
+    {"title": "Moby Dick", "author": "Herman Melville"},
+    {"title": "1984", "author": "George Orwell"},
+    {"title": "The Great Gatsby", "author": "F. Scott Fitzgerald"},
+    {"title": "Ulysses", "author": "James Joyce"},
+    {"title": "War and Peace", "author": "Leo Tolstoy"},
+    {"title": "The Odyssey", "author": "Homer"},
+    {"title": "Hamlet", "author": "William Shakespeare"},
+    {"title": "Crime and Punishment", "author": "Fyodor Dostoevsky"},
+    {"title": "The Catcher in the Rye", "author": "J.D. Salinger"},
+    {"title": "The Grapes of Wrath", "author": "John Steinbeck"},
+    {"title": "Brave New World", "author": "Aldous Huxley"},
+    {"title": "Anna Karenina", "author": "Leo Tolstoy"},
+    {"title": "Alice's Adventures in Wonderland", "author": "Lewis Carroll"},
+    {"title": "The Divine Comedy", "author": "Dante Alighieri"}
+  ]
