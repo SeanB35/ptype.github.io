@@ -73,6 +73,18 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+/*
+.grid-container div:hover {
+  background-color: #292929;
+  transition: background-color 0.3s ease;
+}*/
+
+
+
+
+
+
+
 /*theme buttons*/
 .grid-item-streaks {
   display: flex;
@@ -144,12 +156,33 @@ body {
   background-color: #fff000;
   color: rgb(0, 0, 0);
 }
+.grid-item-johnp {
+  display: flex;
+  padding: 0.875em 2em;
+  background: linear-gradient(90deg, rgb(255, 82, 206), transparent) #3a6d4d;
+  font-family: inherit;
+  color: #ff75aa;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  place-content: center;
+}
+.grid-item-johnp:hover, .grid-item-johnp:focus {
+  background-color: #ff00cc;
+  color: rgb(0, 0, 0);
+}
 
-
-/*.grid-container div:hover {
-  background-color: #292929;
-  transition: background-color 0.3s ease;
-}*/
+.grid-item-scalito{
+  background-image: url("img/scalito.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+.grid-item-sweden{
+  background-image: url("img/scalito.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
 
 /* Typing Section */
 .typing-game {
