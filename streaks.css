@@ -7,13 +7,13 @@
 }
 
 body {
-  background-color: #2a2a2a; 
-  color: #e0e0e0; 
+  background-color: #ffffff; 
+  color: #3700ff; 
   text-align: center;
   padding-top: 20px;
 }
 .ptype {
-  color: #f39c12; 
+  color: #1100ff; 
   font-size: 2rem; 
   text-align: center; 
   margin: 20px 0; 
@@ -37,7 +37,7 @@ body {
 }
 
 .banner a:hover {
-  color: #f39c12; 
+  color: #2f00ff; 
   transition: color 0.3s ease-in-out;
 }
 
@@ -54,7 +54,7 @@ body {
   padding: 15px 20px;
   background-color: #1e1e1e;
   border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 8, 255, 0.2); 
 
 }
 
@@ -311,15 +311,9 @@ input[type="text"]:focus {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  text-align: center;
-  padding-top: 20px;
-}
 
 .ptype {
-  color: #f39c12;
+  color: #ffffff;
   font-size: 2rem;
   text-align: center;
   margin: 20px 0;
@@ -327,7 +321,7 @@ body {
 
 /* Banner Styles */
 .banner {
-  background: #343434;
+  background: #2600ff;
   color: #e0e0e0;
   padding: 15px 20px;
   display: flex;
@@ -362,7 +356,7 @@ body {
 #text-to-type {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #e0e0e0;
+  color: #1900ff;
   margin: 15px 0;
   text-align: left;
 }
@@ -371,14 +365,14 @@ textarea {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #444;
+  border: 2px solid #3106ef;
   background: transparent;
-  color: #e0e0e0;
+  color: #0000ff;
   outline: none;
   resize: none;
   height: 100px;
 }
 
 textarea:focus {
-  border-color: #f39c12;
+  border-color: #127bf3;
 }

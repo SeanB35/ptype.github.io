@@ -7,13 +7,13 @@
 }
 
 body {
-  background-color: #2a2a2a; 
-  color: #e0e0e0; 
+  background-color: #636363; 
+  color: #a00000; 
   text-align: center;
   padding-top: 20px;
 }
 .ptype {
-  color: #f39c12; 
+  color: #931400; 
   font-size: 2rem; 
   text-align: center; 
   margin: 20px 0; 
@@ -21,8 +21,8 @@ body {
 
 
 .banner {
-  background: #343434; 
-  color: #e0e0e0; 
+  background: #717171; 
+  color: #960202; 
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -32,12 +32,12 @@ body {
 
 .banner a {
   text-decoration: none;
-  color: #e0e0e0;
+  color: #9d0000;
   font-size: 1.25rem;
 }
 
 .banner a:hover {
-  color: #f39c12; 
+  color: #ff0000; 
   transition: color 0.3s ease-in-out;
 }
 
@@ -311,48 +311,6 @@ input[type="text"]:focus {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
-  text-align: center;
-  padding-top: 20px;
-}
-
-.ptype {
-  color: #f39c12;
-  font-size: 2rem;
-  text-align: center;
-  margin: 20px 0;
-}
-
-/* Banner Styles */
-.banner {
-  background: #343434;
-  color: #e0e0e0;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-}
-
-.banner a {
-  text-decoration: none;
-  color: #e0e0e0;
-  font-size: 1.25rem;
-}
-
-.banner a:hover {
-  color: #f39c12;
-  transition: color 0.3s ease-in-out;
-}
-
-.header img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
 /* Typing Section */
 .typing-game {
   margin: 20px auto;
@@ -371,14 +329,14 @@ textarea {
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  border: 2px solid #444;
+  border: 2px solid #a50000;
   background: transparent;
-  color: #e0e0e0;
+  color: #580000;
   outline: none;
   resize: none;
   height: 100px;
 }
 
 textarea:focus {
-  border-color: #f39c12;
+  border-color: #ff0000;
 }
