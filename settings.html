@@ -23,16 +23,16 @@
         Themes
     </div>
     <div class="grid-container">
-        <div class="grid-item-streaks" >Streaks</div>
-        <div class="grid-item-stateliner">Stateliner</div>
-        <div class="grid-item-tiger">Tiger</div>
-        <div class="grid-item-scalito">Scalito</div>
-        <div class="grid-item-skenes">Skenes</div>
-        <div class="grid-item-dunn">Dunn</div>
-        <div class="grid-item-sweden">Sweden</div>
-        <div class="grid-item-freedom">Freedom</div>
-        <div class="grid-item-johnp">John Pork</div>
-        <div class="grid-item-tomp">Tom P</div>
+        <div class="grid-item-streaks" id="grid-item-streaks" >Streaks</div>
+        <div class="grid-item-stateliner" id="grid-item-stateliner">Stateliner</div>
+        <div class="grid-item-tiger" id="grid-item-tiger">Tiger</div>
+        <div class="grid-item-scalito" id="grid-item-scalito">Scalito</div>
+        <div class="grid-item-skenes" id="grid-item-skenes">Skenes</div>
+        <div class="grid-item-dunn" id="grid-item-dunn">Dunn</div>
+        <div class="grid-item-sweden" id="grid-item-sweden">Sweden</div>
+        <div class="grid-item-freedom" id="grid-item-freedom">Freedom</div>
+        <div class="grid-item-johnp" id="grid-item-johnp">John Pork</div>
+        <div class="grid-item-tomp" id="grid-item-tomp">Tom P</div>
     </div>
     <div class="font-header">Fonts</div>
     <div class="grid-container2">  
@@ -48,4 +48,32 @@
         <div class="grid-item-font10">Tom P</div>
       </div>
 </body>
+<script>
+    const streaks = document.getElementById('grid-item-streaks');
+    streaksLink = 'streaks_theme.html';
+    streaks.addEventListener('click', () => {
+    // Redirect the browser to the target link
+    window.location.href = streaksLink;
+    });
+    const stateliner = document.getElementById('grid-item-stateliner');
+    const tiger = document.getElementById('grid-item-tiger');
+    tigerLink = 'index.html';
+    tiger.addEventListener('click', () => {
+    // Redirect the browser to the target link
+    window.location.href = tigerLink;
+    });
+    const scalito = document.getElementById('grid-item-scalito');
+    scalitoLink = 'scalito_theme.html';
+    scalito.addEventListener('click', () => {
+    // Redirect the browser to the target link
+    window.location.href = scalitoLink;
+    });
+    const skenes = document.getElementById('grid-item-skenes');
+    const dunn = document.getElementById('grid-item-dunn');
+    const sweden = document.getElementById('grid-item-sweden');
+    const freedom = document.getElementById('grid-item-freedom');
+    const john_pork = document.getElementById('grid-item-johnp');
+    const tomp = document.getElementById('grid-item-tomp');
+
+</script>
 </html>

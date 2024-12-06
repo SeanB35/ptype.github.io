@@ -7,8 +7,10 @@
 }
 
 body {
-  background-color: #2a2a2a;
-  color: #e0e0e0;
+  background-color: #313030;
+  background-image: url("img/scalitoground.jpg");
+  /*color: #ffffff;
+  text-shadow: -1px 1px 0 #b5b5b5, 1px 1px 0 #5c5c5c, 1px -1px 0 #000, -1px -1px 0 #000;*/
   text-align: center;
   padding-top: 20px;
 }
@@ -26,8 +28,8 @@ body {
 /* button styling */
 .ptype-button {
   --border-right: 6px;
-  --text-stroke-color: rgba(255, 255, 255, 0.6);
-  --animation-color: #FFA500; /* Orange for animation */
+  --text-stroke-color: rgb(255, 255, 255);
+  --animation-color: #ffffff; /* Orange for animation */
   --fs-size: 2.5em;
   letter-spacing: 3px;
   text-decoration: none;
@@ -60,13 +62,6 @@ body {
 }
 
 /* Styling for the banner */
-.banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  background-color: #333; /* Example background */
-}
 
 .ptype-logo {
   text-decoration: none;
@@ -74,26 +69,7 @@ body {
 
 
 /* Banner Styles */
-.banner {
-  background: #343434;
-  color: #e0e0e0;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #333;
-}
 
-.banner a {
-  text-decoration: none;
-  color: #e0e0e0;
-  font-size: 1.25rem;
-}
-
-.banner a:hover {
-  color: #f39c12;
-  transition: color 0.3s ease-in-out;
-}
 
 
 
@@ -144,7 +120,6 @@ body {
 .grid-item-streaks,
 .grid-item-stateliner,
 .grid-item-tiger,
-.grid-item-scalito,
 .grid-item-skenes,
 .grid-item-dunn,
 .grid-item-johnp {
@@ -155,8 +130,8 @@ body {
   text-decoration: none;
   transition: background-color 0.3s;
   place-content: center;
-  font-size: 22px
 }
+
 .grid-item-streaks {
   background: linear-gradient(90deg, #3f51b5, transparent) #0073ff;
 }
@@ -259,9 +234,18 @@ body {
   color: rgb(45, 45, 45);
 }
 
+/* Typing Game */
+.typing-game {
+  margin: 20px auto;
+  max-width: 90%;
+}
 
-
-
+#text-to-type {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 10px 0;
+}
 
 /* Font Styles */
 .grid-item-font1 {
@@ -373,20 +357,26 @@ section.screen-keyboard-desktop {
   font-family: "Open Sans", sans-serif; 
   font-size: 16px; 
   font-weight: 600; 
-  color: #333; 
-  background-color: #f39c12; 
-  border: 2px solid #999; 
+  color: #ffffff; 
+  background-color: maroon; 
+  border: 2px solid #3d0000;
   border-radius: 5px; 
+  background-image: url("img/scalito2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px; 
+  background-size:auto;
   cursor: pointer; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(13, 5, 5, 0.317); 
 } 
 button.accent { 
-  background-color: #f39c12; 
+  background-color: maroon; 
 } 
 button.active {
-  background-color: green;
-  color: white;
-  box-shadow: 0 0 10px #2ed573;
+  background-color: rgb(44, 44, 44);
+  color: rgb(255, 0, 0);
+  box-shadow: 0 0 10px #ff0000;
+
 }
 button.special { 
   grid-column: span 2; 
@@ -397,30 +387,24 @@ button.space {
 button:disabled { 
   background: #ddd; cursor: not-allowed; 
 } 
-body { 
-  background-color: #121212; 
-  color: #eaeaea; 
-  text-align: center; 
-  padding-top: 20px;
-} 
 
   .banner { 
-    background: #1f1f1f;
+    background: maroon;
     color: #eaeaea; 
     padding: 15px 20px;
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    border-bottom: 2px solid #333; 
+    border-bottom: 2px solid #540000; 
   } 
 .banner a { 
-  color: #ff9800; 
+  color: #232323; 
   font-size: 1.5rem; 
   text-decoration: none; 
   font-weight: bold; 
 } 
 .banner a:hover {
-   color: #ffd54f; 
+   color: #450000; 
    transition: color 0.3s ease-in-out; 
   } 
 
@@ -437,47 +421,28 @@ body {
 .typing-game { 
   margin: 20px auto; 
   max-width: 90%; 
-  padding:15px; 
-  margin-top: 60px;
-  position: relative;
-  background-color: #1e1e1e; 
+  padding: 15px; 
+  background-color: maroon;
+  background-image: url("img/scalito2.png");
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  background-size:auto;
+  box-shadow: 0 4px 8px rgba(148, 0, 0, 0.4);
+  color: rgb(198, 198, 198)
  } 
- #text-to-type { 
-  font-size: 1.75rem; 
-  color: #ff9800; 
-  font-weight: bold; 
-  text-align:left;
-  position: relative;
-  top: 0;
-  left: 0;
-  font-size: 23px;
-  pointer-events: none; /* Prevent interaction with display text */
-} 
-#user-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 25px;
-  color: transparent; /* Typing text color */
-  background: transparent;
-  outline: none; /* Remove outline for cleaner look */
-  border: none; /* Remove border for clean look */
-  width: 100%;
-}
 textarea { 
   width: 100%; 
   padding: 15px; 
-  background: #1f1f1f; 
-  color: #eaeaea; 
-  border: 2px solid #333; 
+  background: #ffffff; 
+  color: #363636; 
+  border: 2px solid #454545; 
   border-radius: 6px; 
   resize: none; 
   transition: border-color 0.3s ease;
  } 
  textarea:focus 
- { border-color: #ff9800; }
+ { border-color: #2e55ff; }
 
 
 /* From Uiverse.io by thomas-m-njuguna */ 
@@ -486,9 +451,9 @@ textarea {
   justify-content: center;
   align-items: center;
   height: auto;
-  background-color: #1e1e1e;
+  background-color: maroon;
   margin: 0;
-  border: 1px solid #ff9800;
+  border: 3px solid #202020;
   border-radius: 10px;
 }
 .Tbutton {
@@ -527,7 +492,7 @@ textarea {
   visibility: hidden;
   width: 120px;
   background-color: black;
-  color: #ff9800;
+  color: #000000;
   text-align: center;
   border-radius: 5px;
   padding: 5px;
