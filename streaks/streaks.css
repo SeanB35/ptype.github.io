@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
@@ -11,7 +12,7 @@ body {
   color: #2b00ff;
   text-align: center;
   padding-top: 20px;
-  background-image: url("img/streaks.png");
+  background-image: url("../img/streaks.png");
   background-position: center;
   background-size: auto;
 }
@@ -533,4 +534,98 @@ textarea {
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+
+.quoteButton{
+  --😀: #0800ff;
+  --😀😀: #cea559;
+  --😀😀😀: #211c9e;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left:40%;
+  width: 184px;
+  height: 48px;
+  display: flex;
+  align-items:center;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.125em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: white;
+  background: var(--😀);
+  border: 2px solid var(--😀😀);
+  border-radius: .75rem;
+  box-shadow: 0 8px 0 var(--😀😀);
+  transform: skew(-10deg);
+  transition: all .1s ease;
+  filter: drop-shadow(0 2px 5px var(--😀😀😀));
+  
+}
+
+.quoteButton:active {
+  letter-spacing: 0px;
+  transform: skew(-10deg) translateY(8px);
+  box-shadow: 0 0 0 var(--😀😀😀);
+}
+
+.pButton{
+  --😀: #0800ff;
+  --😀😀: #cea559;
+  --😀😀😀: #6f65ca;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left:40%;
+  width: 184px;
+  height: 48px;
+  display: flex;
+  align-items:center;
+  text-decoration: none;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.125em;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: white;
+  background: var(--😀);
+  border: 2px solid var(--😀😀);
+  border-radius: .75rem;
+  box-shadow: 0 8px 0 var(--😀😀);
+  transform: skew(-10deg);
+  transition: all .1s ease;
+  filter: drop-shadow(0 2px 5px var(--😀😀😀));
+}
+
+.pButton:active {
+  letter-spacing: 0px;
+  transform: skew(-10deg) translateY(8px);
+  box-shadow: 0 0 0 var(--😀😀😀);
+}
+
+
+.trRestart {
+  font-size: 1.5rem;
+  color: #0800ff;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid #0800ff;
+  background: #73737c;
+  box-shadow: 3px 3px #0800ff;
+  cursor: pointer;
+  margin: 35px 0;
+  width:20rem;
+  display: inline-block;
+}
+
+.trRestart:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.results-page
+{
+  margin-top: 5%;
+  color: #0800ff;
 }

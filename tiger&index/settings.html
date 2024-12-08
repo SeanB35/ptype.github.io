@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ptype</title>
-    <link rel="stylesheet" href="tiger.css">
+    <link rel="stylesheet" href="/tiger&index/tiger.css">
 </head>
 <body>
     <div class="banner">
-        <a href="index.html" class="ptype-logo">
+        <a href="/tiger&index/index.html" class="ptype-logo">
             <button class="ptype-button" data-text="ptype">
               <span class="actual-text">&nbsp;ptype&nbsp;</span>
               <span aria-hidden="true" class="hover-text">&nbsp;ptype&nbsp;</span>
@@ -50,7 +50,8 @@
 </body>
 <script>
     const streaks = document.getElementById('grid-item-streaks');
-    streaksLink = 'streaks_theme.html';
+    streaksLink = '../streaks/streaks_theme.html';
+
     streaks.addEventListener('click', () => {
     // Redirect the browser to the target link
     window.location.href = streaksLink;
