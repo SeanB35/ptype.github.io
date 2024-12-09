@@ -105,19 +105,22 @@ userInput.addEventListener("input", () => {
         const typedChar = typedText[i];
 
         if (typedChar === undefined) {
-            // Not yet typed
+          // Not yet typed
+          if (i === typedText.length) {
+            // Add the cursor at the current position
+            updatedHTML += `<span style="border-left: 2px solid #ff9800; padding-left: 1px; margin-left: -1px; display: inline-block; height: 1em;"></span>`;
             updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
-            
-        } else if (typedChar === correctChar) {
-            // Correctly typed
-            updatedHTML += `<span style="color: #FFA500;">${correctChar}</span>`;
-            
         } else {
-            // Incorrectly typed
-            updatedHTML += `<span style="color: #ff4757;">${correctChar}</span>`;
-            
-            errors++;
+            updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
         }
+      } else if (typedChar === correctChar) {
+          // Correctly typed
+          updatedHTML += `<span style="color: #FFA500;">${correctChar}</span>`;
+      } else {
+          // Incorrectly typed
+          updatedHTML += `<span style="color: #ff4757;">${correctChar}</span>`;
+          errors++;
+      }
     }
 
     textToType.innerHTML = updatedHTML;
