@@ -39,7 +39,14 @@ userInput.addEventListener("input", () => {
 
         if (typedChar === undefined) {
             // Not yet typed
-            updatedHTML += `<span style="color: #ffffff;">${correctChar}</span>`;
+            if (i === typedText.length) {
+              // Add the cursor at the current position
+              updatedHTML += `<span style="border-left: 3px solid #ff0000; padding-left: 2px; margin-left: -2px; display: inline-block; height: 1em;"></span>`;
+              updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+          } else {
+              updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+          }   
+            
             
         } else if (typedChar === correctChar) {
             // Correctly typed
