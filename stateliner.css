@@ -7,10 +7,12 @@
 }
 
 body {
-  background-color: #313030;
-  /*color: #2b00ff;*/
+  background-color: #3b3b3b;
+  color: rgb(210, 0, 0);
   text-align: center;
   padding-top: 20px;
+  background-position: center;
+  background-size: auto;
 }
 
 /* === removing default button style === */
@@ -27,7 +29,7 @@ body {
 .ptype-button {
   --border-right: 6px;
   --text-stroke-color: rgb(255, 255, 255);
-  --animation-color: #ffffff; /* Orange for animation */
+  --animation-color: #ff0000; /* Orange for animation */
   --fs-size: 2.5em;
   letter-spacing: 3px;
   text-decoration: none;
@@ -66,7 +68,6 @@ body {
 }
 
 
-/* Banner Styles */
 
 
 
@@ -234,17 +235,39 @@ body {
 
 /* Typing Game */
 .typing-game {
-  margin: 20px auto;
-  max-width: 90%;
+  margin: 20px auto; 
+  max-width: 90%; 
+  padding:15px; 
+  margin-top: 60px;
+  position: relative;
+  background-color: #1e1e1e; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 #text-to-type {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: bold;
   color: #ffffff;
   margin: 10px 0;
+  text-align:left;
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 23px;
+  pointer-events: none; /
 }
-
+#user-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 25px;
+  color: transparent; /* Typing text color */
+  background: transparent;
+  outline: none; /* Remove outline for cleaner look */
+  border: none; /* Remove border for clean look */
+  width: 100%;
+}
 /* Font Styles */
 .grid-item-font1 {
   font-family: 'Times New Roman', Times, serif;
@@ -357,18 +380,18 @@ section.screen-keyboard-desktop {
   font-weight: 600; 
   color: #ffffff; 
   background-color: maroon; 
-  border: 2px solid #3d0000;
+  border: 2px solid rgb(78, 0, 0);
   border-radius: 5px; 
   cursor: pointer; 
-  box-shadow: 0 2px 4px rgba(13, 5, 5, 0.317); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 } 
 button.accent { 
   background-color: maroon; 
 } 
 button.active {
-  background-color: rgb(44, 44, 44);
+  background-color: rgb(38, 38, 38);
   color: rgb(255, 0, 0);
-  box-shadow: 0 0 10px #ff0000;
+  box-shadow: 0 0 10px #000000;
 
 }
 button.special { 
@@ -383,21 +406,21 @@ button:disabled {
 
   .banner { 
     background: maroon;
-    color: #eaeaea; 
+    color: #444444; 
     padding: 15px 20px;
     display: flex; 
     align-items: center; 
     justify-content: space-between; 
-    border-bottom: 2px solid #540000; 
+    border-bottom: 2px solid #000000; 
   } 
 .banner a { 
-  color: #232323; 
+  color: #000000; 
   font-size: 1.5rem; 
   text-decoration: none; 
   font-weight: bold; 
 } 
 .banner a:hover {
-   color: #450000; 
+   color: #000000; 
    transition: color 0.3s ease-in-out; 
   } 
 
@@ -417,32 +440,29 @@ button:disabled {
   padding: 15px; 
   background-color: maroon; 
   border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(148, 0, 0, 0.4);
-  color: rgb(198, 198, 198)
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  color: white
  } 
 textarea { 
   width: 100%; 
   padding: 15px; 
   background: #ffffff; 
-  color: #363636; 
-  border: 2px solid #454545; 
+  color: #ffffff; 
+  border: 2px solid #000000; 
   border-radius: 6px; 
   resize: none; 
   transition: border-color 0.3s ease;
  } 
  textarea:focus 
- { border-color: #2e55ff; }
-
-
-/* From Uiverse.io by thomas-m-njuguna */ 
+ { border-color: #414141; }
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
-  background-color: maroon;
+  background-color: #292929;
   margin: 0;
-  border: 3px solid #202020;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 }
 .Tbutton {
