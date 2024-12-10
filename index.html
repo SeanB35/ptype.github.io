@@ -39,21 +39,445 @@
             </a>
           </div>
     </div>
-    <div>
+    <!---div>
       <a href="quoteMode.html">
         <button class="quoteButton" spellcheck="false">
           Quote Mode
         </button>
       </a>
       
+    </div>-->
+    <div class="rounded-box">
+      <div class="button-container">
+        <!-- Quote Mode -->
+        <div class="mode-group">
+          <label class="checkBox">
+            <input id="quoteMode" type="checkbox" onclick="handleModeSelection('quoteMode')">
+            <div class="transition"></div>
+          </label>
+          <h3>Quote Mode</h3>
+        </div>
+    
+        <!-- P Mode -->
+        <div class="mode-group">
+          <label class="checkBox">
+            <input id="pMode" type="checkbox" onclick="handleModeSelection('pMode')">
+            <div class="transition"></div>
+          </label>
+          <h3>P Mode</h3>
+        </div>
+    
+        <!-- Timed -->
+        <div class="setting-group">
+          <label class="checkBox">
+            <input id="timed" type="checkbox" onclick="handleSettingSelection('timed')">
+            <div class="transition"></div>
+          </label>
+          <h3>Timed</h3>
+        </div>
+    
+        <!-- Words -->
+        <div class="setting-group">
+          <label class="checkBox">
+            <input id="words" type="checkbox" onclick="handleSettingSelection('words')">
+            <div class="transition"></div>
+          </label>
+          <h3>Words</h3>
+        </div>
+      </div>
+      
     </div>
+    <script>
+     document.addEventListener('DOMContentLoaded', () => {
+  // Automatically select P Mode and Words on page load
+  document.getElementById('pMode').checked = true;
+  document.getElementById('words').checked = true;
+  handleModeSelection('pMode');
+});
+
+let currentMode = ''; // Tracks the current mode
+
+function handleModeSelection(selectedId) {
+  const quoteMode = document.getElementById('quoteMode');
+  const pMode = document.getElementById('pMode');
+  const wordsCheckbox = document.getElementById('words');
+  const timeCheckbox = document.getElementById('time');
+
+  // Enforce mutual exclusivity between modes
+  if (selectedId === 'quoteMode' && quoteMode.checked) {
+    pMode.checked = false; // Deselect P Mode
+    currentMode = 'quote';
+    wordsCheckbox.checked = false; // Words not allowed in Quote Mode
+    wordsCheckbox.disabled = true; // Disable Words option
+    wordsCheckbox.parentElement.style.opacity = 0.5; // Dim Words option
+  } else if (selectedId === 'pMode' && pMode.checked) {
+    quoteMode.checked = false; // Deselect Quote Mode
+    currentMode = 'p';
+    wordsCheckbox.disabled = false; // Enable Words option
+    wordsCheckbox.parentElement.style.opacity = 1; // Restore Words option
+  }
+
+  // Enforce mutual exclusivity between Words and Time
+  if (wordsCheckbox.checked && timeCheckbox.checked) {
+    timeCheckbox.checked = false; // Automatically uncheck Time
+  }
+
+  // Ensure at least one mode is always selected
+  if (!quoteMode.checked && !pMode.checked) {
+    alert('You must select either P Mode or Quote Mode.');
+    document.getElementById(currentMode === 'quote' ? 'pMode' : 'quoteMode').checked = true;
+    currentMode = currentMode === 'quote' ? 'p' : 'quote';
+  }
+
+  applyModeLogic();
+}
+
+function applyModeLogic() {
+  if (currentMode === 'quote') {
+    const quotes = [
+  "The only limit to our realization of tomorrow is our doubts of today",
+  "Life is what happens when you are busy making other plans",
+  "Success is not final failure is not fatal it is the courage to continue that counts",
+  "In the middle of every difficulty lies opportunity",
+  "What you get by achieving your goals is not as important as what you become by achieving your goals",
+  "Happiness is not something ready made it comes from your own actions",
+  "Do not watch the clock do what it does keep going",
+  "The best way to predict the future is to create it",
+  "Your time is limited so do not waste it living someone else’s life",
+  "Act as if what you do makes a difference because it does",
+  "You miss one hundred percent of the shots you do not take",
+  "The journey of a thousand miles begins with one step",
+  "The best revenge is massive success",
+  "It always seems impossible until it is done",
+  "What lies behind us and what lies before us are tiny matters compared to what lies within us",
+  "Do what you can with what you have where you are",
+  "Don't lose hope, although the freaks are weak, the scalitos are hopeless.",
+  "Do not wait to strike till the iron is hot but make it hot by striking",
+  "You must be the change you wish to see in the world",
+  "Believe you can and you are halfway there",
+  "Fall seven times and stand up eight",
+  "Do not let the fear of striking out keep you from playing the game",
+  "Dream big and dare to fail",
+  "The future belongs to those who believe in the beauty of their dreams",
+  "If you can dream it you can do it",
+  "Keep your face always toward the sunshine and shadows will fall behind you",
+  "The harder the conflict the greater the triumph"
+];
+
+
+// DOM Elements
+const textToType = document.getElementById("text-to-type");
+const userInput = document.getElementById("user-input");
+
+
+
+// Initialize Game
+const targetText = quotes[Math.floor(Math.random() * quotes.length)];
+textToType.innerHTML = targetText;
+
+// Variables for Tracking
+let startTime = null;
+let errors = 0;
+
+// Event Listener for Typing
+userInput.addEventListener("input", () => {
+  if (!startTime) startTime = new Date(); // Start timer on first input
+
+  const typedText = userInput.value;
+  let updatedHTML = "";
+  errors = 0;
+
+  for (let i = 0; i < targetText.length; i++) {
+      const correctChar = targetText[i];
+      const typedChar = typedText[i];
+
+      if (typedChar === undefined) {
+          // Not yet typed
+          if (i === typedText.length) {
+            // Add the cursor at the current position
+            updatedHTML += `<span style="border-left: 2px solid #ff9800; padding-left: 1px; margin-left: -1px; display: inline-block; height: 1em;"></span>`;
+            updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+        } else {
+            updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+        }
+      } else if (typedChar === correctChar) {
+          // Correctly typed
+          updatedHTML += `<span style="color: #FFA500;">${correctChar}</span>`;
+      } else {
+          // Incorrectly typed
+          updatedHTML += `<span style="color: #ff4757;">${correctChar}</span>`;
+          errors++;
+      }
+  }
+
+  textToType.innerHTML = updatedHTML;
+
+  // Check if typing is complete
+  if (typedText.length === targetText.length) {
+      const endTime = new Date();
+      const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+      const wpm = Math.round((targetText.split(" ").length / timeTaken) * 60);
+
+      // Save results to sessionStorage
+      sessionStorage.setItem("wpm", wpm);
+      sessionStorage.setItem("time", timeTaken.toFixed(2));
+      sessionStorage.setItem("errors", errors);
+
+      // Redirect to results page
+      window.location.href = "quoteResultsPage.html";
+  }
+});
+
+// Select all buttons in the virtual keyboard
+const buttons = document.querySelectorAll('button');
+
+// Create Audio objects for the keyboard click sounds
+const clickSound = new Audio('audios/167326__willy_ineedthatapp_com__click.mp3'); // Sound for all keys except space
+const spaceSound = new Audio('audios/spacebar-click-keyboard-199448.mp3'); // Sound for the space bar
+
+// Add event listeners for keydown and keyup
+document.addEventListener('keydown', (event) => {
+  // Handle space bar explicitly
+  const key = event.key === ' ' ? 'Space' : event.key;
+
+  // Find the button with the matching data-key attribute
+  const button = document.querySelector(`button[data-key="${key}"]`);
+
+  if (button) {
+    // Add the "active" class to change the button's appearance
+    button.classList.add('active');
+
+    // Play the appropriate sound
+    if (event.key === ' ') {
+      spaceSound.currentTime = 0; // Reset to start for rapid clicks
+      spaceSound.play();
+    } else {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  // Handle space bar explicitly
+  const key = event.key === ' ' ? 'Space' : event.key;
+
+  // Find the button with the matching data-key attribute
+  const button = document.querySelector(`button[data-key="${key}"]`);
+  if (button) {
+    // Remove the "active" class
+    button.classList.remove('active');
+  }
+});
+
+  } else if (currentMode === 'p') {
+    const wordBank = [
+    "a", "about", "above", "across", "act", "active", "activity", "add", "afraid", "after", "again", "age", "ago", "agree", "air", 
+    "all", "alone", "along", "already", "always", "am", "amount", "an", "and", "angry", "another", "answer", "any", "anyone", 
+    "anything", "anytime", "appear", "apple", "are", "area", "arm", "army", "around", "arrive", "art", "as", "ask", "at", 
+    "attack", "aunt", "autumn", "away", "baby", "base", "back", "bad", "bag", "ball", "bank", "basket", "bath", "be", "bean", 
+    "bear", "beautiful", "beer", "bed", "bedroom", "behave", "before", "begin", "behind", "bell", "below", "besides", "best", 
+    "better", "between", "big", "bird", "birth", "birthday", "bit", "bite", "black", "bleed", "block", "blood", "blow", "blue", 
+    "board", "boat", "body", "boil", "bone", "book", "border", "born", "borrow", "both", "bottle", "bottom", "bowl", "box", "boy", 
+    "branch", "brave", "bread", "break", "breakfast", "breathe", "bridge", "bright", "bring", "brother", "brown", "brush", "build", 
+    "burn", "business", "bus", "busy", "but", "buy", "by", "cake", "call", "can", "candle", "cap", "car", "card", "care", "careful", 
+    "careless", "carry", "case", "cat", "catch", "central", "century", "certain", "chair", "chance", "change", "chase", "cheap", 
+    "cheese", "chicken", "child", "children", "chocolate", "choice", "choose", "circle", "city", "class", "clever", "clean", "clear", 
+    "climb", "clock", "cloth", "clothes", "cloud", "cloudy", "close", "coffee", "coat", "coin", "cold", "collect", "colour", "comb", 
+    "comfortable", "common", "compare", "come", "complete", "computer", "condition", "continue", "control", "cook", "cool", "copper", 
+    "corn", "corner", "correct", "cost", "contain", "count", "country", "course", "cover", "crash", "cross", "cry", "cup", "cupboard", 
+    "cut", "dance", "dangerous", "dark", "daughter", "day", "dead", "decide", "decrease", "deep", "deer", "depend", "desk", "destroy", 
+    "develop", "die", "different", "difficult", "dinner", "direction", "dirty", "discover", "dish", "direction", "do", "dog", "door", 
+    "double", "down", "draw", "dream", "dress", "drink", "drive", "drop", "dry", "duck", "dust", "duty", "each", "ear", "early", "earn", 
+    "earth", "east", "easy", "eat", "education", "effect", "egg", "eight", "either", "electric", "elephant", "else", "empty", "end", 
+    "enemy", "enjoy", "enough", "enter", "equal", "entrance", "escape", "even", "evening", "event", "ever", "every", "everyone", 
+    "exact", "everybody", "examination", "example", "except", "excited", "exercise", "expect", "expensive", "explain", "extremely", 
+    "eye", "face", "fact", "fail", "fall", "false", "family", "famous", "far", "farm", "father", "fast", "fat", "fault", "fear", "feed", 
+    "feel", "female", "fever", "few", "fight", "fill", "film", "find", "fine", "finger", "finish", "fire", "first", "fit", "five", "fix", 
+    "flag", "flat", "float", "floor", "flour", "flower", "fly", "fold", "food", "fool", "foot", "football", "for", "force", "foreign", 
+    "forest", "forget", "forgive", "fork", "form", "fox", "four", "free", "freedom", "freeze", "fresh", "friend", "friendly", "from", 
+    "front", "fruit", "full", "fun", "funny", "furniture", "further", "future", "game", "garden", "gate", "general", "gentleman", "get", 
+    "gift", "give", "glad", "glass", "go", "goat", "god", "gold", "good", "goodbye", "grandfather", "grandmother", "grass", "grave", 
+    "great", "green", "grey", "ground", "group", "grow", "gun", "hair", "half", "hall", "hammer", "hand", "happen", "happy", "hard", 
+    "hat", "hate", "have", "he", "head", "healthy", "hear", "heavy", "hello", "help", "heart", "heaven", "height", "help", "hen", "her", 
+    "here", "hers", "hide", "high", "hill", "him", "his", "hit", "hobby", "hold", "hole", "holiday", "home", "hope", "horse", "hospital", 
+    "hot", "hotel", "house", "how", "hundred", "hungry", "hour", "hurry", "husband", "hurt", "I", "ice", "idea", "if", "important", "in", 
+    "increase", "inside", "into", "introduce", "invent", "iron", "invite", "is", "island", "it", "its", "jelly", "job", "join", "juice", 
+    "jump", "just", "keep", "key", "kill", "kind", "king", "kitchen", "knee", "knife", "knock", "know", "ladder", "lady", "lamp", "land", 
+    "large", "last", "late", "lately", "laugh", "lazy", "lead", "leaf", "learn", "leave", "leg", "left", "lend", "length", "less", 
+    "lesson", "let", "letter", "library", "lie", "life", "light", "like", "lion", "lip", "list", "listen", "little", "live", "lock", 
+    "lonely", "long", "look", "lose", "lot", "love", "low", "lower", "luck", "machine", "main", "make", "male", "man", "many", "map", 
+    "mark", "market", "marry", "matter", "may", "me", "meal", "mean", "measure", "meat", "medicine", "meet", "member", "mention", 
+    "method", "middle", "milk", "million", "mind", "minute", "miss", "mistake", "mix", "model", "modern", "moment", "money", "monkey", 
+    "month", "moon", "more", "morning", "most", "mother", "mountain", "mouth", "move", "much", "music", "must", "my", "name", "narrow", 
+    "nation", "nature", "near", "nearly", "neck", "need", "needle", "neighbour", "neither", "net", "never", "new", "news", "newspaper", 
+    "next", "nice", "night", "nine", "no", "noble", "noise", "none", "nor", "north", "nose", "not", "nothing", "notice", "now", "number", 
+    "obey", "object", "ocean", "of", "off", "offer", "office", "often", "oil", "old", "on", "one", "only", "open", "opposite", "or", 
+    "orange", "order", "other", "our", "out", "outside", "over", "own", "page", "pain", "paint", "pair", "pan", "paper", "parent", 
+    "park", "part", "partner", "party", "pass", "past", "path", "pay", "peace", "pen", "pencil", "people", "pepper", "per", "perfect", 
+    "period", "person", "petrol", "photograph", "piano", "pick", "picture", "piece", "pig", "pin", "pink", "place", "plane", "plant", 
+    "plastic", "plate", "play", "please", "pleased", "plenty", "pocket", "point", "poison", "police", "polite", "pool", "poor", "popular", 
+    "position", "possible", "potato", "pour", "power", "present", "press", "pretty", "prevent", "price", "prince", "prison", "private", 
+    "prize", "probably", "problem", "produce", "promise", "proper", "protect", "provide", "public", "pull", "punish", "pupil", "push", 
+    "put", "queen", "question", "quick", "quiet", "quite", "radio", "rain", "rainy", "raise", "reach", "read", "ready", "real", "really", 
+    "receive", "record", "red", "remember", "remind", "remove", "rent", "repair", "repeat", "reply", "report", "rest", "restaurant", 
+    "result", "return", "rice", "rich", "ride", "right", "ring", "rise", "road", "rob", "rock", "room", "round", "rubber", "rude", "rule", 
+    "ruler", "run", "rush", "sad", "safe", "sail", "salt", "same", "sand", "save", "say", "school", "science", "scissors", "search", 
+    "seat", "second", "see", "seem", "sell", "send", "sentence", "serve", "seven", "several", "sex", "shade", "shadow", "shake", "shape", 
+    "share", "sharp", "she", "sheep", "sheet", "shelf", "shine", "ship", "shirt", "shoe", "shoot", "shop", "short", "should", "shoulder", 
+    "shout", "show", "sick", "side", "signal", "silence", "silly", "silver", "similar", "simple", "single", "since", "sing", "sink", 
+    "sister", "sit", "six", "size", "skill", "skin", "skirt", "sky", "sleep", "slip", "slow", "smoke", "small", "smell", "smile", "smoke", 
+    "snow", "so", "soap", "sock", "soft", "some", "someone", "something", "sometimes", "son", "soon", "sorry", "sound", "soup", "south", 
+    "space", "speak", "special", "speed", "spell", "spend", "spoon", "sport", "spread", "spring", "square", "stamp", "stand", "star", 
+    "start", "station", "stay", "steal", "steam", "step", "still", "stomach", "stone", "stop", "store", "storm", "story", "strange", 
+    "street", "strong", "structure", "student", "study", "stupid", "subject", "substance", "successful", "such", "sudden", "sugar", 
+    "suitable", "summer", "sun", "sunny", "support", "sure", "surprise", "sweet", "swim", "sword", "table", "take", "talk", "tall", "taste", 
+    "taxi", "tea", "teach", "team", "tear", "telephone", "television", "tell", "ten", "tennis", "terrible", "test", "than", "that", "the", 
+    "their", "then", "there", "therefore", "these", "thick", "thin", "thing", "think", "third", "this", "though", "threat", "three", 
+    "tidy", "tie", "title", "to", "today", "toe", "together", "tomorrow", "tonight", "too", "tool", "tooth", "top", "total", "touch", 
+    "town", "train", "tram", "travel", "tree", "trouble", "true", "trust", "twice", "try", "turn", "type", "uncle", "under", "understand", 
+    "unit", "until", "up", "use", "useful", "usual", "usually", "vegetable", "very", "village", "voice", "visit", "wait", "wake", "walk", 
+    "want", "warm", "wash", "waste", "watch", "water", "way", "we", "weak", "wear", "weather", "wedding", "week", "weight", "welcome", 
+    "well", "west", "wet", "what", "wheel", "when", "where", "which", "while", "white", "who", "why", "wide", "wife", "wild", "will", 
+    "win", "wind", "window", "wine", "winter", "wire", "wise", "wish", "with", "without", "woman", "wonder", "word", "work", "world", 
+    "worry", "worst", "write", "wrong", "year", "yes", "yesterday", "yet", "you", "young", "zero", "zoo"
+  ];
+  
+  document.querySelector('textarea').spellcheck = false;
+
+// DOM Elements
+const textToType = document.getElementById("text-to-type");
+const userInput = document.getElementById("user-input");
+
+// Generate Random Text
+const generateRandomText = () => {
+    const words = [];
+    for (let i = 0; i < 25; i++) {
+        words.push(wordBank[Math.floor(Math.random() * wordBank.length)]);
+    }
+    return words.join(" ");
+};
+
+// Initialize Game
+const targetText = generateRandomText();
+textToType.innerHTML = targetText;
+
+// Variables for Tracking
+let startTime = null;
+let errors = 0;
+
+// Event Listener for Typing
+userInput.addEventListener("input", () => {
+    if (!startTime) startTime = new Date(); // Start timer on first input
+
+    const typedText = userInput.value;
+    let updatedHTML = "";
+    errors = 0;
+
+    for (let i = 0; i < targetText.length; i++) {
+        const correctChar = targetText[i];
+        const typedChar = typedText[i];
+
+        if (typedChar === undefined) {
+          // Not yet typed
+          if (i === typedText.length) {
+            // Add the cursor at the current position
+            updatedHTML += `<span style="border-left: 2px solid #ff9800; padding-left: 1px; margin-left: -1px; display: inline-block; height: 1em;"></span>`;
+            updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+        } else {
+            updatedHTML += `<span style="color: #734a00;">${correctChar}</span>`;
+        }
+      } else if (typedChar === correctChar) {
+          // Correctly typed
+          updatedHTML += `<span style="color: #FFA500;">${correctChar}</span>`;
+      } else {
+          // Incorrectly typed
+          updatedHTML += `<span style="color: #ff4757;">${correctChar}</span>`;
+          errors++;
+      }
+    }
+
+    textToType.innerHTML = updatedHTML;
+
+
+
+    // Check if typing is complete
+    if (typedText.length === targetText.length) {
+        const endTime = new Date();
+        const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+        const wpm = Math.round((targetText.split(" ").length / timeTaken) * 60);
+
+        // Save results to sessionStorage
+        sessionStorage.setItem("wpm", wpm);
+        sessionStorage.setItem("time", timeTaken.toFixed(2));
+        sessionStorage.setItem("errors", errors);
+
+        // Redirect to results page
+        window.location.href = "resultsPage.html";
+    }
+});
+
+// Select all buttons in the virtual keyboard
+const buttons = document.querySelectorAll('button');
+
+// Create Audio objects for the keyboard click sounds
+const clickSound = new Audio('audios/167326__willy_ineedthatapp_com__click.mp3'); // Sound for all keys except space
+const spaceSound = new Audio('audios/spacebar-click-keyboard-199448.mp3'); // Sound for the space bar
+
+// Add event listeners for keydown and keyup
+document.addEventListener('keydown', (event) => {
+  // Handle space bar explicitly
+  const key = event.key === ' ' ? 'Space' : event.key;
+
+  // Find the button with the matching data-key attribute
+  const button = document.querySelector(`button[data-key="${key}"]`);
+
+  if (button) {
+    // Add the "active" class to change the button's appearance
+    button.classList.add('active');
+
+    // Play the appropriate sound
+    if (event.key === ' ') {
+      spaceSound.currentTime = 0; // Reset to start for rapid clicks
+      spaceSound.play();
+    } else {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+  }
+});
+
+document.addEventListener('keyup', (event) => {
+  // Handle space bar explicitly
+  const key = event.key === ' ' ? 'Space' : event.key;
+
+  // Find the button with the matching data-key attribute
+  const button = document.querySelector(`button[data-key="${key}"]`);
+  if (button) {
+    // Remove the "active" class
+    button.classList.remove('active');
+  }
+});
+
+
+
+  }
+}
+
+function resetMode() {
+  console.log('No mode active');
+  // Reset logic when no mode is active
+  document.body.style.backgroundColor = ''; // Reset background color
+}
+
+    </script>
     <div class="typing-game">
         
         <div id="text-to-type"></div>
         
         <textarea id="user-input" autocomplete="false" spellcheck="false"></textarea>
     </div>
-    <script src="scripts/indexTypingScript.js"></script>
+    <!--<script src="scripts/indexTypingScript.js"></script>-->
     <section class="screen-keyboard-desktop">
         <div class="keys">
             <!-- Row 1 -->
