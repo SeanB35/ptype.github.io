@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitchy Page</title>
+    <style>
+        /* Basic Reset */
+        body, h1, p, div {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Glitchy Text Styling */
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glitch Animation */
+        @keyframes glitch {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+                clip-path: inset(0 0 0 0);
+            }
+            20% {
+                transform: translateX(-5px);
+                opacity: 0.7;
+                clip-path: inset(10% 0 10% 0);
+            }
+            40% {
+                transform: translateX(5px);
+                opacity: 0.8;
+                clip-path: inset(0 0 0 10%);
+            }
+            60% {
+                transform: translateX(-5px);
+                opacity: 0.7;
+                clip-path: inset(0 10% 0 0);
+            }
+            80% {
+                transform: translateX(5px);
+                opacity: 0.8;
+                clip-path: inset(0 0 10% 0);
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        /* Apply Glitch to Multiple Elements */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+            animation: glitch 1s infinite linear alternate-reverse;
+            color: white;
+            z-index: 1;
+        }
+
+        /* Background Flicker */
+        .glitch-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            opacity: 0.3;
+            animation: glitch-background 0.5s infinite linear alternate-reverse;
+            z-index: -1;
+        }
+
+        /* Glitch background flicker animation */
+        @keyframes glitch-background {
+            0% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Glitchy Lines on the Screen */
+        .glitch-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .glitch-lines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: glitch-lines 0.2s infinite;
+        }
+
+        .glitch-lines::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: glitch-lines 0.2s infinite;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes glitch-lines {
+            0% {
+                transform: translateX(-100px);
+            }
+            50% {
+                transform: translateX(100px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Glitchy Text -->
+    <h1 class="glitch-text">Glitchy Page!</h1>
+    <p class="glitch-text">This is a page with a glitchy effect applied to text and the background!</p>
+
+    <!-- Glitchy Background and Lines -->
+    <div class="glitch-background"></div>
+    <div class="glitch-lines"></div>
+
+    <script>
+        // JavaScript to apply glitch effect to the entire page with slight randomization
+
+        function randomizeGlitchEffect() {
+            const glitchElements = document.querySelectorAll('.glitch-text');
+            glitchElements.forEach(el => {
+                let randomDelay = Math.random() * 2; // Random delay between 0 and 2 seconds
+                el.style.animationDelay = `${randomDelay}s`; // Apply random delay for a less synchronized effect
+            });
+        }
+
+        // Apply the random delay glitch effect at intervals
+        setInterval(randomizeGlitchEffect, 1000);
+    </script>
+
+</body>
+</html>
